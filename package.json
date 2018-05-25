@@ -1,0 +1,30 @@
+{
+  "name": "@johncowen/api-double",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "api-double": "./bin/index.js"
+  },
+  "dependencies": {
+    "@gardenhq/o": "^8.0.1",
+    "@gardenhq/tick-control": "^2.0.0",
+    "array-range": "^1.0.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "faker": "^4.1.0",
+    "js-yaml": "^3.10.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.0.0",
+    "mocha-multi": "^1.0.0",
+    "testdouble": "^3.3.3",
+    "testdouble-chai": "^0.5.0"
+  }
+}

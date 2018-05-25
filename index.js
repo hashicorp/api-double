@@ -1,0 +1,58 @@
+
+const tickControl = require("@gardenhq/tick-control");
+const faker = require("faker");
+const createRenderer = require("./lib/render");
+const createResolver = require("./lib/resolve");
+const createFinder = require("./lib/find");
+const createController = require("./lib/controller");
+const createVars = require("./vars/index");
+const read = require("./lib/read");
+const locationFactory = require("./location/factory");
+const range = require("array-range");
+const YAML = require("js-yaml");
+
+
+module.exports = function(seed, root)
+{
+  const resolve = createResolver(function(path){return path}, root);
+  const find = createFinder(read, root);
+  const render = createRenderer(
+      createVars(
+          locationFactory(),
+          range,
+          window.localStorage
+      ),
+      tickControl(),
+      faker,
+      seed
+  );
+  return function() {
+    const mutations = [];
+    const mutate = function(url, content, config) {
+      return JSON.stringify(mutations.filter(
+        function(item, i, arr) {
+          // console.log(url, item.url);
+          return item.url === url;
+        }
+      ).reduce(
+        function(prev, item, i, arr) {
+          return item.mutate(prev, config)
+        },
+        JSON.parse(content)
+      ));
+    }
+    const addMutation = function(cb, url) {
+      mutations.push(
+        {
+          url: url,
+          mutate: cb
+        }
+      );
+    }
+    const controller = createController(resolve, find, render, YAML, mutate);
+    return {
+      serve: controller,
+      mutate: addMutation
+    };
+  }
+}

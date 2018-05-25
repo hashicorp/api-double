@@ -1,0 +1,94 @@
+---
+imports:
+  - "@gardenhq/tick-control/container"
+main:
+  callable: "./app"
+  arguments:
+    - "@express"
+    - "--port"
+    - "--dir"
+    - "@express.middleware"
+app.http.headers:
+  callable: "./lib/headers"
+  tags:
+    - {name: "express.middleware", key: 0}
+app.http.controller:
+  callable: "./lib/controller"
+  arguments:
+    - "@app.resolve"
+    - "@app.find"
+    - "@app.render"
+    - "@js-yaml"
+  tags:
+    - {name: "express.middleware", key: 2}
+app.render:
+  callable: "./lib/render"
+  arguments:
+    - "@app.vars"
+    - "@gardenhq.tick-control.template-literal"
+    - "@faker"
+    - "--seed"
+app.location.factory:
+  callable: "./location/factory"
+app.vars:
+  callable: "./vars/index"
+  arguments:
+    - "@app.location.factory"
+    - "@array-range"
+
+app.read:
+  callable: "@promisify"
+  arguments:
+    - "@fs:readFile"
+app.find:
+  callable: "./lib/find"
+  arguments:
+    - "@app.read"
+    - "@app.dir"
+app.resolve:
+  callable: "./lib/resolve"
+  arguments:
+    - "@path:resolve"
+    - "@app.dir"
+app.dir:
+  callable: "@path:resolve"
+  arguments:
+    - "--dir"
+
+
+
+
+# express
+express.cookie-parser:
+  callable: "cookie-parser"
+  tags:
+    - {name: "express.middleware", key: 1}
+express.middleware:
+  iterator: "@express.iterator.middleware"
+  arguments:
+    - "#express.middleware"
+express.iterator.middleware:
+  callable: "./express/iterator/middleware"
+  arguments:
+    - "@express"
+express:
+  callable: "express"
+
+array-range:
+  object: "array-range"
+
+# faker
+faker:
+  object: "faker"
+# yaml
+js-yaml:
+  object: "js-yaml"
+
+
+# node
+promisify:
+  object: "util:promisify"
+fs:
+  object: "fs"
+path:
+  object: "path"
