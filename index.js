@@ -31,8 +31,14 @@ module.exports = function(seed, root)
     const mutate = function(url, content, config) {
       return JSON.stringify(mutations.filter(
         function(item, i, arr) {
-          // console.log(url, item.url);
-          return item.url === url;
+          // TODO: Deprecate checking on strings, should always be a callable
+          let cb = item.url;
+          if(typeof item.url !== 'function') {
+            cb = function(actual) {
+              return item.url === url;
+            }
+          }
+          return cb(url);
         }
       ).reduce(
         function(prev, item, i, arr) {
