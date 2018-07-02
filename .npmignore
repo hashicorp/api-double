@@ -6,6 +6,7 @@
 /lib/.DS_Store
 !/iterator/*
 !/location/*
+!/reader/*
 !/vars/*
 !/*.js
 !/container.yaml

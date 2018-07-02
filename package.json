@@ -1,14 +1,21 @@
 {
   "name": "@hashicorp/api-double",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "format:js": "prettier --write --ignore-path .gitignore \"**/*.js\" \"**/.*.js\""
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bin": {
     "api-double": "./bin/index.js"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
   "dependencies": {
     "@gardenhq/o": "^8.0.1",
@@ -24,6 +31,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^5.0.0",
     "mocha-multi": "^1.0.0",
+    "prettier": "^1.13.7",
     "testdouble": "^3.3.3",
     "testdouble-chai": "^0.5.0"
   }
