@@ -6,16 +6,18 @@ const createResolver = require("./lib/resolve");
 const createFinder = require("./lib/find");
 const createController = require("./lib/controller");
 const createVars = require("./vars/index");
-const read = require("./lib/read");
+const read = require("./reader/fetch");
+// const read = require("./reader/html");
 const locationFactory = require("./location/factory");
 const range = require("array-range");
 const YAML = require("js-yaml");
 
 
-module.exports = function(seed, root)
+module.exports = function(seed, root, reader)
 {
+  reader = typeof reader === 'undefined' ? read : reader;
   const resolve = createResolver(function(path){return path}, root);
-  const find = createFinder(read, root);
+  const find = createFinder(reader, root);
   const render = createRenderer(
       createVars(
           locationFactory(),
