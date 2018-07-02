@@ -14,7 +14,7 @@ const YAML = require('js-yaml');
 module.exports = function(seed, root, reader) {
   reader = typeof reader === 'undefined' ? read : reader;
   const resolve = createResolver(function(path) {
-    return path;
+    return path[path.length - 1] === '/' ? path.substr(0, path.length - 1) : path;
   }, root);
   const find = createFinder(reader, root);
   const render = createRenderer(
