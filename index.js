@@ -25,7 +25,7 @@ module.exports = function(seed, root, reader) {
   );
   return function() {
     const mutations = [];
-    const mutate = function(url, content, config) {
+    const mutate = function(request, content, config) {
       return JSON.stringify(
         mutations
           .filter(function(item, i, arr) {
@@ -33,10 +33,11 @@ module.exports = function(seed, root, reader) {
             let cb = item.url;
             if (typeof item.url !== 'function') {
               cb = function(actual) {
-                return item.url === url;
+                return item.url === request.url;
               };
             }
-            return cb(url);
+            // TODO: Deprecate passing 2 arguments pass a request object instead
+            return cb(request.url, request.method);
           })
           .reduce(function(prev, item, i, arr) {
             return item.mutate(prev, config);
