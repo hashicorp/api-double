@@ -1,14 +1,14 @@
 {
   "name": "@hashicorp/api-double",
   "version": "1.4.0",
-  "description": "",
+  "description": "api-double serving via HTTP or other means",
   "main": "index.js",
   "scripts": {
     "format:js": "prettier --write --ignore-path .gitignore \"**/*.js\" \"**/.*.js\""
   },
   "keywords": [],
   "author": "",
-  "license": "MPL-2",
+  "license": "MPL-2.0",
   "bin": {
     "api-double": "./bin/index.js"
   },
