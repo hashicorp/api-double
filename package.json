@@ -6,6 +6,10 @@
   "scripts": {
     "format:js": "prettier --write --ignore-path .gitignore \"**/*.js\" \"**/.*.js\""
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hashicorp/api-double.git"
+  },
   "keywords": [],
   "author": "",
   "license": "MPL-2.0",
