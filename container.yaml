@@ -20,7 +20,7 @@ app.http.controller:
     - "@app.render"
     - "@js-yaml"
   tags:
-    - {name: "express.middleware", key: 2}
+    - {name: "express.middleware", key: 3}
 app.render:
   callable: "./lib/render"
   arguments:
@@ -63,6 +63,12 @@ express.cookie-parser:
   callable: "cookie-parser"
   tags:
     - {name: "express.middleware", key: 1}
+express.body-parser:
+  callable: "body-parser:text"
+  arguments:
+    - {type: ['*/*']}
+  tags:
+    - {name: "express.middleware", key: 2}
 express.middleware:
   iterator: "@express.iterator.middleware"
   arguments:
