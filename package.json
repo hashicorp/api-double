@@ -1,6 +1,6 @@
 {
   "name": "@hashicorp/api-double",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "api-double serving via HTTP or other means",
   "main": "index.js",
   "scripts": {
