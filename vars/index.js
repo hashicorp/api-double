@@ -17,13 +17,23 @@ module.exports = function(locationFactory, range, env) {
       env: function(key, def) {
         key = key.toUpperCase();
         return (
-          this.http.cookies[key] ||
-          env[key] ||
-          this.http.headers[`X-${key.replace('_', '-')}`] ||
-          def ||
-          null
+          [
+            this.http.cookies[key],
+            env[key],
+            this.http.headers[`X-${key.replace('_', '-')}`],
+            def,
+            null,
+          ].reduce(
+            function(prev, item) {
+              if(typeof prev !== 'undefined') {
+                return prev;
+              }
+              return item;
+            }
+          )
         );
       },
     });
   };
 };
+
