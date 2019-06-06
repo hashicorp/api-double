@@ -11,9 +11,12 @@
     "url": "https://github.com/hashicorp/api-double.git"
   },
   "keywords": [],
-  "author": {
-    "email": "jcowen@hashicorp.com"
-  },
+  "author": "",
+  "collaborators": [
+    {
+      "email": "jcowen@hashicorp.com"
+    }
+  ],
   "license": "MPL-2.0",
   "bin": {
     "api-double": "./bin/index.js"
