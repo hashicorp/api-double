@@ -29,6 +29,6 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "faker": "^4.1.0",
-    "js-yaml": "^3.10.0"
+    "js-yaml": "^3.13.1"
   }
 }
