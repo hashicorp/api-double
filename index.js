@@ -1,28 +1,21 @@
-const tickControl = require('@gardenhq/tick-control');
 const faker = require('faker');
-const createRenderer = require('./lib/render');
-const createResolver = require('./lib/resolve');
-const createFinder = require('./lib/find');
-const createController = require('./lib/controller');
-const createVars = require('./vars/index');
-const read = require('./reader/fetch');
-// const read = require("./reader/html");
-const locationFactory = require('./location/factory');
-const range = require('array-range');
 const YAML = require('js-yaml');
+const range = require('array-range');
+const Template = require('@gardenhq/tick-control')();
+//
+const locationFactory = require('./location/factory.js');
+const vars = require('./vars/index.js');
+const renderer = require('./lib/render');
+const finder = require('./lib/find');
+const resolver = require('./lib/resolve');
 
-module.exports = function(seed, root, reader) {
+module.exports = function(seed, path, reader, $, resolve) {
   reader = typeof reader === 'undefined' ? read : reader;
-  const resolve = createResolver(function(path) {
+  $ = typeof $ === 'undefined' ? window.localStorage : $;
+  resolve = typeof resolve === 'undefined' ? function(path) {
     return path[path.length - 1] === '/' ? path.substr(0, path.length - 1) : path;
-  }, root);
-  const find = createFinder(reader, root);
-  const render = createRenderer(
-    createVars(locationFactory(), range, window.localStorage),
-    tickControl(),
-    faker,
-    seed
-  );
+  } : resolve;
+
   return function() {
     const mutations = [];
     const mutate = function(request, content, config) {
@@ -50,7 +43,18 @@ module.exports = function(seed, root, reader) {
         mutate: cb,
       });
     };
-    const controller = createController(resolve, find, render, YAML, mutate);
+    const controller = require('./lib/controller')(
+      resolver(resolve, path),
+      finder(reader, path),
+      renderer(
+        vars(locationFactory(), range, $),
+        Template,
+        faker,
+        seed
+      ),
+      YAML,
+      mutate
+    );
     return {
       serve: controller,
       mutate: addMutation,

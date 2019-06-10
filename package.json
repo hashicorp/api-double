@@ -27,7 +27,6 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@gardenhq/o": "^8.0.1",
     "@gardenhq/tick-control": "^2.0.0",
     "array-range": "^1.0.1",
     "body-parser": "^1.18.3",
