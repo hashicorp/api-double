@@ -1,5 +1,5 @@
 # release helpers
-.PHONY: major minor patch release verify
+.PHONY: major minor patch release verify docs
 NPM=npm
 major:
 minor:
@@ -22,5 +22,8 @@ release: verify;
 	@echo "Releasing as '$$($(NPM) whoami)'" \
 	  && git push && git push --tags
 	#&& npm publish . --access public
+
+docs:
+	npm run docs
 
 

@@ -4,7 +4,8 @@
   "description": "api-double serving via HTTP or other means",
   "main": "index.js",
   "scripts": {
-    "format:js": "prettier --write --ignore-path .gitignore \"**/*.js\" \"**/.*.js\""
+    "format:js": "prettier --write --ignore-path .gitignore \"**/*.js\" \"**/.*.js\"",
+    "docs": "typedoc --theme markdown --out ./docs --includeDeclarations -excludeExternals index.d.ts"
   },
   "repository": {
     "type": "git",
@@ -34,5 +35,9 @@
     "express": "^4.16.2",
     "faker": "^4.1.0",
     "js-yaml": "^3.13.1"
+  },
+  "devDependencies": {
+    "typedoc": "^0.14.2",
+    "typedoc-plugin-markdown": "^1.2.1"
   }
 }
