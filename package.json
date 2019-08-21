@@ -28,16 +28,16 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@gardenhq/tick-control": "^2.0.0",
     "array-range": "^1.0.1",
-    "body-parser": "^1.18.3",
-    "cookie-parser": "^1.4.3",
-    "express": "^4.16.2",
+    "backtick-template": "^0.2.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
     "faker": "^4.1.0",
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
-    "typedoc": "^0.14.2",
-    "typedoc-plugin-markdown": "^1.2.1"
+    "typedoc": "^0.15.0",
+    "typedoc-plugin-markdown": "^2.1.3"
   }
 }

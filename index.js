@@ -1,7 +1,16 @@
 const faker = require('faker');
 const YAML = require('js-yaml');
 const range = require('array-range');
-const Template = require('@gardenhq/tick-control')();
+const template = require('backtick-template');
+
+class Template {
+  constructor(template) {
+    this._template = template;
+  }
+  render(vars) {
+    return template(this._template, vars);
+  }
+}
 //
 const locationFactory = require('./location/factory.js');
 const vars = require('./vars/index.js');
