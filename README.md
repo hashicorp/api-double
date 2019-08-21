@@ -6,6 +6,30 @@ See <https://github.com/hashicorp/consul-api-double/> for an example of an api-d
 
 'Templates' use simple native javascript template literals for very basic looping and basic logic for providing fake data.
 
+## Usage
+
+### CLI/Server
+
+```bash
+api-double --dir path/to/templates
+
+# Flags
+
+--dir : set the path to template files (default ./)
+--seed : set the seed for faker to use
+--port : set the port to serve from (default: 3000)
+
+# ENV vars
+
+HC_API_DOUBLE_PORT : default port to use
+HC_API_DOUBLE_DIR : default path to use
+HC_API_DOUBLE_SEED: default seed to use
+```
+
+### Browser/frontend only usage
+
+TODO
+
 ## Wildcard templates
 
 To provide a double for `/v1/health/service/:name`
@@ -17,6 +41,20 @@ Further configuration will be provided by a `/v1/health/service/.config` file or
 ## Extra template helpers:
 
 Right now very subject to change. But the idea is to keep them as minimal as possible and just rely on `faker`, plus helpers to get things you need for doing stuff like this (easy way to loop, access to url params and headers)
+
+### http properties
+
+```
+http.headers.*
+http.method
+http.cookies.*
+```
+
+### env(key, defaultValue)
+
+Gets the 'environment' value specified by `key`, if it doesn't exist, use the
+default value. 'environment' variables come from cookies by default, which
+can be easily set using the browsers Web Inspector
 
 ### range(int)
 
@@ -90,4 +128,11 @@ Reference a 'segment' in the current url
     "catalog"
 ]
 ```
+
+### location.pathname.slice
+
+### location.pathname.isDir
+
+### location.search
+
 
