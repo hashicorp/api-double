@@ -1,7 +1,11 @@
 const faker = require('faker');
 const YAML = require('js-yaml');
 const range = require('array-range');
-const template = require('backtick-template');
+
+let template = require('backtick-template');
+if(typeof template !== 'function') {
+  template = template.default;
+}
 
 class Template {
   constructor(template) {
