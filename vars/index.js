@@ -11,6 +11,7 @@ module.exports = function(locationFactory, range, env) {
       },
       http: {
         headers: vars.headers || {},
+        body: vars.body || {},
         method: vars.method || 'GET',
         cookies: vars.cookies || {},
       },

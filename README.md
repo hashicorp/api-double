@@ -42,11 +42,14 @@ Further configuration will be provided by a `/v1/health/service/.config` file or
 
 Right now very subject to change. But the idea is to keep them as minimal as possible and just rely on `faker`, plus helpers to get things you need for doing stuff like this (easy way to loop, access to url params and headers)
 
-### http properties
+### HTTP properties
+
+HTTP data is accessible via the http object using the following properties:
 
 ```
-http.headers.*
 http.method
+http.headers.*
+http.body.*
 http.cookies.*
 ```
 
@@ -114,6 +117,11 @@ Reference to the current url
     "/v1/catalog/datacenters"
 ]
 ```
+
+### location.search
+
+This gives you a place to access queryParams `location.search.queryParamName`
+
 ### location.pathname.get(int)
 
 Reference a 'segment' in the current url
@@ -133,6 +141,5 @@ Reference a 'segment' in the current url
 
 ### location.pathname.isDir
 
-### location.search
 
 
