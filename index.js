@@ -32,6 +32,11 @@ module.exports = function(seed, path, reader, $, resolve) {
   return function() {
     const mutations = [];
     const mutate = function(request, content, config) {
+      try {
+        const isJSON = JSON.parse(content);
+      } catch(e) {
+        return content;
+      }
       return JSON.stringify(
         mutations
           .filter(function(item, i, arr) {
