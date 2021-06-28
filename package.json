@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "format:js": "prettier --write --ignore-path .gitignore \"**/*.js\" \"**/.*.js\"",
-    "docs": "typedoc --theme markdown --out ./docs --includeDeclarations -excludeExternals index.d.ts"
+    "docs": "typedoc --theme markdown --out ./docs -excludeExternals index.d.ts"
   },
   "repository": {
     "type": "git",
@@ -33,11 +33,11 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
-    "faker": "^4.1.0",
-    "js-yaml": "^3.13.1"
+    "faker": "^5.5.3",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
-    "typedoc": "^0.15.0",
-    "typedoc-plugin-markdown": "^2.1.11"
+    "typedoc": "^0.21.2",
+    "typedoc-plugin-markdown": "^3.10.2"
   }
 }
