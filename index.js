@@ -15,6 +15,11 @@ class Template {
     return template(this._template, vars);
   }
 }
+
+// temporarily overwrite faker with old style methods
+faker.random.number = function() { return faker.datatype.number(...arguments) };
+faker.random.boolean = function() { return faker.datatype.boolean(...arguments) };
+
 //
 const locationFactory = require('./location/factory.js');
 const vars = require('./vars/index.js');
@@ -65,10 +70,8 @@ module.exports = function(seed, path, reader, $, resolve) {
       resolver(resolve, path),
       finder(reader, path),
       renderer(
-        vars(locationFactory(), range, $),
         Template,
-        faker,
-        seed
+        vars(locationFactory(), range, $, faker, seed)
       ),
       YAML,
       mutate
