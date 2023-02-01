@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 const faker = require('faker');
 const YAML = require('js-yaml');
 const range = require('array-range');
