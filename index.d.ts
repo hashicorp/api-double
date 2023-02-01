@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 export = apiDouble;
 /**
  * @param seed - Seed to be passed to use for fake variables

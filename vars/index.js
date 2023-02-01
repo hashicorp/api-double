@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 module.exports = function(locationFactory, range, env) {
   env = typeof env === 'undefined' ? process.env : env;
   return function(vars) {
