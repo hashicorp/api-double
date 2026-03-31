@@ -32,7 +32,7 @@
     "backtick-template": "^0.2.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
-    "express": "^4.17.1",
+    "express": "^5.2.1",
     "faker": "^5.5.3",
     "js-yaml": "^4.1.0"
   },
