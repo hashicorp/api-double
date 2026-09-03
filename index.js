@@ -1,3 +1,7 @@
+/**
+ * Copyright IBM Corp. 2018, 2026
+ */
+
 const faker = require('faker');
 const YAML = require('js-yaml');
 const range = require('array-range');
