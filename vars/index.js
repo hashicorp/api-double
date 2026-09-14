@@ -1,3 +1,7 @@
+/**
+ * Copyright IBM Corp. 2018, 2026
+ */
+
 module.exports = function(locationFactory, range, env) {
   env = typeof env === 'undefined' ? process.env : env;
   return function(vars) {
