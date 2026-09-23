@@ -1,3 +1,7 @@
+/**
+ * Copyright IBM Corp. 2018, 2026
+ */
+
 export = apiDouble;
 /**
  * @param seed - Seed to be passed to use for fake variables
