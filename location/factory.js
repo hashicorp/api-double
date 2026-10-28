@@ -1,3 +1,7 @@
+/**
+ * Copyright IBM Corp. 2018, 2026
+ */
+
 module.exports = function() {
   return function(path, query) {
     var split = path.split('/');
