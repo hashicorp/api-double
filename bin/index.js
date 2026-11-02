@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+/**
+ * Copyright IBM Corp. 2018, 2026
+ */
+
 //
 const $ = process.env;
 const fs = require('fs');
