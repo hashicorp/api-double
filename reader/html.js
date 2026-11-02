@@ -1,3 +1,7 @@
+/**
+ * Copyright IBM Corp. 2018, 2026
+ */
+
 module.exports = function(url) {
   const template = document.querySelector(`script[data-url="${url}"]`);
   if (template) {
